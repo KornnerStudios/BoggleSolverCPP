@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="precompile.h" />
+    <ClInclude Include="ransampl.h">
+      <Filter>support</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="bit_vectors.h">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_text_file_io.h">
+      <Filter>boggle</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_dictionary_word.h">
+      <Filter>boggle_dictionary</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_dictionary.h">
+      <Filter>boggle_dictionary</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_dictionary_trie_node.h">
+      <Filter>boggle_dictionary</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_dictionary_compact_trie_node.h">
+      <Filter>boggle_dictionary</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_dictionary_trie.h">
+      <Filter>boggle_dictionary</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_dictionary_compact_trie.h">
+      <Filter>boggle_dictionary</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_grid_cell_neighbor.h">
+      <Filter>boggle_grid</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_grid_cell.h">
+      <Filter>boggle_grid</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_grid.h">
+      <Filter>boggle_grid</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle_grid_char.h">
+      <Filter>boggle_grid</Filter>
+    </ClInclude>
+    <ClInclude Include="boggle.h">
+      <Filter>boggle</Filter>
+    </ClInclude>
+    <ClInclude Include="trie_boggle_board_solver.h">
+      <Filter>boggle</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="precompile.cpp" />
+    <ClCompile Include="ransampl.c">
+      <Filter>support</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="bit_vectors.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="boggle_text_file_io.cpp">
+      <Filter>boggle</Filter>
+    </ClCompile>
+    <ClCompile Include="boggle_dictionary.cpp">
+      <Filter>boggle_dictionary</Filter>
+    </ClCompile>
+    <ClCompile Include="boggle_dictionary_trie.cpp">
+      <Filter>boggle_dictionary</Filter>
+    </ClCompile>
+    <ClCompile Include="boggle_dictionary_compact_trie.cpp">
+      <Filter>boggle_dictionary</Filter>
+    </ClCompile>
+    <ClCompile Include="boggle_grid.cpp">
+      <Filter>boggle_grid</Filter>
+    </ClCompile>
+    <ClCompile Include="boggle_grid_char.cpp">
+      <Filter>boggle_grid</Filter>
+    </ClCompile>
+    <ClCompile Include="boggle.cpp">
+      <Filter>boggle</Filter>
+    </ClCompile>
+    <ClCompile Include="trie_boggle_board_solver.cpp">
+      <Filter>boggle</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="support">
+      <UniqueIdentifier>{2e0177a2-6e9a-4006-8308-0ae74e4abd60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utilities">
+      <UniqueIdentifier>{815b99fe-b422-47de-8ed1-06b6e3633586}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="boggle_dictionary">
+      <UniqueIdentifier>{306d41f4-37bd-4a9a-9730-b904f1fb95bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="boggle_grid">
+      <UniqueIdentifier>{ace4cde9-6702-4909-abd5-dc177f7735d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="boggle">
+      <UniqueIdentifier>{3030debb-ff50-4e39-95d1-d0f0c6af4b30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{2322dd2f-d7ed-44b8-af83-12904924f193}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ransampl_COPYING">
+      <Filter>support</Filter>
+    </None>
+  </ItemGroup>
+</Project>
