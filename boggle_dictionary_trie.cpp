@@ -262,7 +262,7 @@ int c_boggle_dictionary_trie::get_or_add_root_node_index(
 	const boggle_grid_char_t grid_char)
 {
 	if (grid_char == k_invalid_boggle_grid_char ||
-		!TEST_FLAG(m_grid_chars_on_grid, grid_char))
+		!test_bit(m_grid_chars_on_grid, grid_char))
 	{
 		return -1;
 	}
@@ -293,7 +293,7 @@ s_boggle_dictionary_trie_node* c_boggle_dictionary_trie::get_node_child(
 	if (node == nullptr || grid_char == k_invalid_boggle_grid_char)
 		return nullptr;
 
-	if (!TEST_FLAG(node->valid_child_node_indices_flags, grid_char))
+	if (!test_bit(node->valid_child_node_indices_flags, grid_char))
 		return nullptr;
 
 	int child_node_index = node->child_node_indices[grid_char];
@@ -331,7 +331,7 @@ int c_boggle_dictionary_trie::get_or_add_child_node_index(
 	const boggle_grid_char_t grid_char)
 {
 	if (grid_char == k_invalid_boggle_grid_char ||
-		!TEST_FLAG(m_grid_chars_on_grid, grid_char))
+		!test_bit(m_grid_chars_on_grid, grid_char))
 	{
 		return -1;
 	}

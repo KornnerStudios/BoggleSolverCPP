@@ -47,7 +47,7 @@ struct s_boggle_dictionary_word
 		const boggle_grid_char_t grid_char) const
 	{
 		return grid_char != k_invalid_boggle_grid_char
-			&& TEST_FLAG(grid_chars_in_word_flags, grid_char);
+			&& test_bit(grid_chars_in_word_flags, grid_char);
 	}
 };
 

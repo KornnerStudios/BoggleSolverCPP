@@ -45,7 +45,7 @@ boggle_grid_cell_index_t s_boggle_grid_cell::get_neighbor_cell_index(
 	const c_boggle_grid* grid,
 	const e_boggle_grid_cell_neighbor neighbor) const
 {
-	if (!TEST_FLAG(valid_neighbor_flags, neighbor))
+	if (!test_bit(valid_neighbor_flags, neighbor))
 		return k_invalid_boggle_grid_cell_index;
 
 	return grid->get_neighbor_index_cell_unsafe(this->row, this->column, neighbor);
@@ -119,36 +119,36 @@ void c_boggle_grid::get_neighbor_row_and_column(
 	int& col,
 	const e_boggle_grid_cell_neighbor neighbor) const
 {
-	static const uint32_t k_neighbor_mask_decrement_row =
+	static const uint8_t k_neighbor_mask_decrement_row =
 		FLAG(_boggle_grid_cell_neighbor_north_west) |
 		FLAG(_boggle_grid_cell_neighbor_north) |
 		FLAG(_boggle_grid_cell_neighbor_north_east);
-	static const uint32_t k_neighbor_mask_increment_row =
+	static const uint8_t k_neighbor_mask_increment_row =
 		FLAG(_boggle_grid_cell_neighbor_south_west) |
 		FLAG(_boggle_grid_cell_neighbor_south) |
 		FLAG(_boggle_grid_cell_neighbor_south_east);
-	static const uint32_t k_neighbor_mask_decrement_col =
+	static const uint8_t k_neighbor_mask_decrement_col =
 		FLAG(_boggle_grid_cell_neighbor_north_west) |
 		FLAG(_boggle_grid_cell_neighbor_west) |
 		FLAG(_boggle_grid_cell_neighbor_south_west);
-	static const uint32_t k_neighbor_mask_increment_col =
+	static const uint8_t k_neighbor_mask_increment_col =
 		FLAG(_boggle_grid_cell_neighbor_north_east) |
 		FLAG(_boggle_grid_cell_neighbor_east) |
 		FLAG(_boggle_grid_cell_neighbor_south_east);
 
-	if (TEST_FLAG(k_neighbor_mask_decrement_row, neighbor))
+	if (test_bit(k_neighbor_mask_decrement_row, neighbor))
 	{
 		row--;
 	}
-	if (TEST_FLAG(k_neighbor_mask_decrement_col, neighbor))
+	if (test_bit(k_neighbor_mask_decrement_col, neighbor))
 	{
 		col--;
 	}
-	if (TEST_FLAG(k_neighbor_mask_increment_row, neighbor))
+	if (test_bit(k_neighbor_mask_increment_row, neighbor))
 	{
 		row++;
 	}
-	if (TEST_FLAG(k_neighbor_mask_increment_col, neighbor))
+	if (test_bit(k_neighbor_mask_increment_col, neighbor))
 	{
 		col++;
 	}
@@ -203,8 +203,8 @@ bool c_boggle_grid::set_grid_characters(
 }
 
 boggle_grid_cell_index_t c_boggle_grid::cell_position_to_index_unsafe(
-	const boggle_grid_cell_axis_index_t row,
-	const boggle_grid_cell_axis_index_t column) const
+	const int row,
+	const int column) const
 {
 	int index = (row * m_dimensions.y) + column;
 
@@ -222,8 +222,8 @@ boggle_grid_cell_index_t c_boggle_grid::get_neighbor_index_cell_unsafe(
 	get_neighbor_row_and_column(row, col, neighbor);
 
 	boggle_grid_cell_index_t cell_index = cell_position_to_index_unsafe(
-		static_cast<boggle_grid_cell_axis_index_t>(row),
-		static_cast<boggle_grid_cell_axis_index_t>(col));
+		row,
+		col);
 
 	return cell_index;
 }
@@ -244,8 +244,8 @@ boggle_grid_cell_index_t c_boggle_grid::get_neighbor_cell_index(
 		col >= 0 && col < m_dimensions.y)
 	{
 		cell_index = cell_position_to_index_unsafe(
-			static_cast<boggle_grid_cell_axis_index_t>(row),
-			static_cast<boggle_grid_cell_axis_index_t>(col));
+			row,
+			col);
 	}
 
 	return cell_index;
@@ -258,7 +258,7 @@ boggle_grid_cell_index_t c_boggle_grid::cell_index_of(
 	if (start_index >= m_cell_count)
 		return k_invalid_boggle_grid_char;
 
-	for (size_t x = start_index; x < m_cell_count; x++)
+	for (uint32_t x = start_index; x < m_cell_count; x++)
 	{
 		if (grid_char == m_cells[x].grid_char)
 			return static_cast<boggle_grid_cell_index_t>(x);

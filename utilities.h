@@ -22,11 +22,40 @@ struct s_point2d
 
 #define BIT_COUNT(type) ( sizeof(type) * 8 )
 
-constexpr uint32_t compile_time_log2(uint32_t n, uint32_t p = 0)
+constexpr uint32_t compile_time_log2(
+	const uint32_t n,
+	const uint32_t p = 0)
 {
 	return n <= 1
 		? p
 		: compile_time_log2(n / 2, p + 1);
+}
+
+template<
+	typename TFlags,
+	typename TBit>
+inline
+bool test_bit(
+		const TFlags flags,
+		const TBit bit)
+{
+	static_assert(sizeof(TFlags) <= sizeof(uint32_t),
+		"test_bit not yet written to support >32-bit flags");
+
+	return (static_cast<uint32_t>(flags) & (1U << static_cast<uint32_t>(bit))) > 0;
+}
+
+template<
+	typename TFlags>
+inline
+	bool test_flag(
+		const TFlags flags,
+		const uint32_t flag)
+{
+	static_assert(sizeof(TFlags) <= sizeof(uint32_t),
+		"test_flag not yet written to support >32-bit flags");
+
+	return (static_cast<uint32_t>(flags) & flag) != 0;
 }
 
 uint32_t count_number_of_1s_bits(

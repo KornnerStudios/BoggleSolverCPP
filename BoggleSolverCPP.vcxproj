@@ -142,6 +142,11 @@
   <ItemGroup>
     <None Include="ransampl_COPYING" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\10x10_Dictionary.txt" />
+    <Text Include="data\10x10_Grid.txt" />
+    <Text Include="data\english.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

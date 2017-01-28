@@ -113,4 +113,15 @@
       <Filter>support</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\10x10_Dictionary.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="data\10x10_Grid.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="data\english.txt">
+      <Filter>data</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

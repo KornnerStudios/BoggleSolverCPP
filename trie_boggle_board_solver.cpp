@@ -185,17 +185,17 @@ struct s_solver_stack_data
 
 	bool requires_iterating_neighbors_as_qu() const
 	{
-		return TEST_FLAG(flags, _requires_iterating_neighbors_as_qu_bit);
+		return test_bit(flags, _requires_iterating_neighbors_as_qu_bit);
 	}
 
 	bool has_iterated_current_neighbor_as_qu() const
 	{
-		return TEST_FLAG(flags, _iterated_current_neighbor_as_qu_bit);
+		return test_bit(flags, _iterated_current_neighbor_as_qu_bit);
 	}
 
 	bool try_current_neighbor_as_qu() const
 	{
-		return TEST_FLAG(flags, _try_current_neighbor_as_qu_bit);
+		return test_bit(flags, _try_current_neighbor_as_qu_bit);
 	}
 
 	static s_solver_stack_data unused_object()
@@ -242,7 +242,7 @@ void c_trie_boggle_board_root_character_solver::solve_nonrecursive(
 		}
 		else if (cursor.state == s_solver_stack_data::_state_iterating_neighbors)
 		{
-			if (TEST_FLAG(cursor.flags, cursor._unmark_neighbor_cell_in_use_bit))
+			if (test_bit(cursor.flags, cursor._unmark_neighbor_cell_in_use_bit))
 			{
 				SET_FLAG(cursor.flags, cursor._unmark_neighbor_cell_in_use_bit, false);
 				mark_cell_in_use(cursor.neighbor_cell_index, false);

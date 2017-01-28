@@ -33,7 +33,7 @@ struct s_boggle_dictionary_trie_node
 		const boggle_grid_char_t grid_char) const
 	{
 		return grid_char != k_invalid_boggle_grid_char
-			&& TEST_FLAG(valid_child_node_indices_flags, grid_char);
+			&& test_bit(valid_child_node_indices_flags, grid_char);
 	}
 
 	boggle_grid_char_t get_first_grid_char() const

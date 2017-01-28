@@ -31,8 +31,8 @@ public:
 		const char* board_letters);
 
 	boggle_grid_cell_index_t cell_position_to_index_unsafe(
-		const boggle_grid_cell_axis_index_t row,
-		const boggle_grid_cell_axis_index_t column) const;
+		const int row,
+		const int column) const;
 
 	boggle_grid_cell_index_t get_neighbor_index_cell_unsafe(
 		const int cell_row,
