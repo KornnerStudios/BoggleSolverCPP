@@ -82,12 +82,6 @@ bool c_boggle::build_dictionary_trie(
 	success = dictionary_trie.build();
 	m_estimated_total_memory_used_for_dictionary_trie = dictionary_trie.estimate_total_memory_used();
 
-#if 0 // for figuring out the c_boggle_dictionary::estimated_node_count formula
-	auto word_count = m_dictionary->get_number_of_words();
-	auto avg_word_length = m_dictionary->get_average_word_length();
-	size_t node_count = dictionary_trie.get_node_count();
-#endif
-
 	if (success)
 	{
 		m_dictionary_compact_trie = new c_boggle_dictionary_compact_trie(dictionary_trie);
