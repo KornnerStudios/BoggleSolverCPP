@@ -6,8 +6,10 @@ struct _iobuf;
 
 struct s_point2d
 {
-	int32_t x;
-	int32_t y;
+	typedef int32_t component_t;
+
+	component_t x;
+	component_t y;
 };
 
 #define FLAG(b) (1U<<(b))
