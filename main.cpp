@@ -16,7 +16,7 @@ int main()
 
 	boggle_board_unit_tests();
 
-    return 0;
+	return 0;
 }
 
 static void generate_boggle_board(
