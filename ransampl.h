@@ -8,7 +8,7 @@
  * Copyright: Joachim Wuttke, Forschungszentrum Juelich GmbH (2013)
  *
  * License:   see ../COPYING (FreeBSD)
- * 
+ *
  * Homepage:  apps.jcns.fz-juelich.de/ransampl
  */
 
@@ -25,7 +25,7 @@
 #endif
 __BEGIN_DECLS
 
-typedef struct {
+typedef struct ransampl_ws {
     int n;
     int* alias;
     double* prob;

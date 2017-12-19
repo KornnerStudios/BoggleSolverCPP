@@ -6,6 +6,7 @@
 static_assert(sizeof(s_boggle_grid_cell) == 0x8,
 	"Unexpected s_boggle_grid_cell size");
 
+// #TODO MSVC++ is generating dynamic initializers for these when using numeric_limits, which are constexpr, instead of literals via C MAX macros :|
 const boggle_grid_cell_axis_index_t k_invalid_boggle_grid_cell_axis_index = std::numeric_limits<boggle_grid_cell_axis_index_t>::max();
 const boggle_grid_cell_index_t k_invalid_boggle_grid_cell_index = std::numeric_limits<boggle_grid_cell_index_t>::max();
 

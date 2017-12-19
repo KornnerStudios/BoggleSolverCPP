@@ -17,8 +17,9 @@ struct bit_vector_traits
 		k_bit_count_log2 = compile_time_log2(k_bit_count),
 	};
 
+	// How many TWords it takes to hold a bit vector with k_bit_length bits
 	template<size_t k_bit_length>
-	struct size_in_words 
+	struct size_in_words
 	{ enum {
 		value = (k_bit_length + (k_bit_count-1)) >> k_bit_count_log2
 	}; };
@@ -76,8 +77,6 @@ struct bit_vector_traits
 
 typedef bit_vector_traits<uint32_t> bit_vector_traits_dword;
 
-// How many 32 bit integers it takes to hold a bit vector with [size] bits
-#define BIT_VECTOR_SIZE_IN_DWORDS(size)			( bit_vector_traits_dword::size_in_words<size>::value )
 // How many total bits are in the supplied bit vector size and type container
 #define BIT_VECTOR_SIZE_IN_BITS(size, type)		( (size) * BIT_COUNT(type) )
 #define BIT_VECTOR_TEST_FLAG32(vector, bit)			bit_vector_traits_dword::test_flag(reinterpret_cast<const uint32_t*>(vector), bit)

@@ -5,7 +5,7 @@
 
 #include <utilities.h>
 
-enum
+enum e_boggle_grid_char_constants
 {
 	k_boggle_grid_char_lower_case_letter_start = 'a',
 	k_boggle_grid_char_lower_case_letter_end = 'z',
