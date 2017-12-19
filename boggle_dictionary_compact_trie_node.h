@@ -68,7 +68,7 @@ struct s_boggle_dictionary_compact_trie_node
 	void set_parent_node_index(
 		const raw_relative_node_index_t parent_node_index)
 	{
-		// less than OR equal to as 0 is the invalid sentinel, not the max value
+		// less-than-OR-equal because 0 is the invalid sentinel, not the max value
 		assert(parent_node_index<=k_relative_node_index_bit_mask ||
 			!"try to increase k_relative_node_index_bit_count");
 

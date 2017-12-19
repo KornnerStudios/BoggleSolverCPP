@@ -127,7 +127,7 @@ bool c_boggle::build_dictionary_trie(
 	return success;
 }
 
-void c_boggle::set_legal_words(
+void c_boggle::set_legal_words_from_alphabetically_sorted_array(
 	const std::vector<std::string>& all_words)
 {
 	if (m_currently_solving_board.load())
@@ -144,7 +144,7 @@ void c_boggle::set_legal_words(
 		return;
 	}
 
-	if (!m_dictionary->set_legal_words(all_words))
+	if (!m_dictionary->set_legal_words_from_alphabetically_sorted_array(all_words))
 	{
 		output_error("set_legal_words failed to add all_words to dictionary");
 		return;

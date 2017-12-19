@@ -15,11 +15,13 @@ void s_boggle_dictionary_word::initialize(
 	const bool contains_qu,
 	const boggle_grid_char_flags_t grid_chars_in_word_flags)
 {
-	assert(length <= UINT16_MAX);
+	assert(length <= k_max_length);
 	assert(length_with_qu_as_one_grid_char <= k_length_with_qu_as_one_grid_char_mask);
 
 	this->private_flags = static_cast<uint16_t>(length_with_qu_as_one_grid_char);
-	this->private_flags |= contains_qu ? k_contains_qu_flag : 0;
+	this->private_flags |= contains_qu
+		? k_contains_qu_flag
+		: 0;
 	this->length = static_cast<uint16_t>(length);
 	this->string_pool_offset = string_pool_offset;
 	this->grid_chars_in_word_flags = grid_chars_in_word_flags;
@@ -43,7 +45,7 @@ c_boggle_dictionary::c_boggle_dictionary()
 	, m_words(nullptr)
 	, m_root_chars_word_lengths()
 {
-	m_root_chars_word_lengths.fill({ UINT16_MAX, 0 });
+	m_root_chars_word_lengths.fill({ s_boggle_dictionary_word::k_max_length, 0 });
 }
 
 c_boggle_dictionary::~c_boggle_dictionary()
@@ -126,7 +128,7 @@ bool c_boggle_dictionary::add_word(
 		return false;
 	}
 
-	char prev_char = CHAR_MIN;
+	char prev_char = std::numeric_limits<char>::min();
 	char curr_char;
 	bool word_contains_qu = false;
 	uint32_t word_length_with_qu_as_one_grid_char = 0;
@@ -188,7 +190,7 @@ bool c_boggle_dictionary::add_word(
 	return true;
 }
 
-bool c_boggle_dictionary::set_legal_words(
+bool c_boggle_dictionary::set_legal_words_from_alphabetically_sorted_array(
 	const std::vector<std::string>& all_words)
 {
 	m_string_pool_size = calculate_string_pool_size_for_legal_words(all_words);

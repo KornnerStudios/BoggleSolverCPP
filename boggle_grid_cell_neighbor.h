@@ -27,5 +27,6 @@ e_boggle_grid_cell_neighbor& operator++(
 	return neighbor;
 }
 
+// bitvector with each bit representing a e_boggle_grid_cell_neighbor
 typedef uint8_t boggle_grid_cell_neighbor_flags_t;
 

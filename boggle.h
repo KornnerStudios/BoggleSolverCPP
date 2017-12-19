@@ -57,7 +57,7 @@ public:
 	// prior to solving any board, configure the legal words
 	// #NOTE given that this is a public API and I can't guarantee the lifetime of all_words
 	// we build our own private representation of all_words (c_boggle_dictionary)
-	void set_legal_words(
+	void set_legal_words_from_alphabetically_sorted_array(
 		// alphabetically-sorted array of legal words
 		const std::vector<std::string>& all_words);
 

@@ -16,7 +16,7 @@ public:
 	enum
 	{
 		k_shortest_acceptable_word_length = 3,
-		k_longest_acceptable_word_length = INT8_MAX,
+		k_longest_acceptable_word_length = std::numeric_limits<int8_t>::max(),
 
 		k_file_data_signature = 'dict',
 		k_file_data_version = 1,
@@ -62,7 +62,7 @@ public:
 
 	size_t estimate_total_memory_used() const;
 
-	bool set_legal_words(
+	bool set_legal_words_from_alphabetically_sorted_array(
 		// alphabetically-sorted array of legal words
 		const std::vector<std::string>& all_words);
 

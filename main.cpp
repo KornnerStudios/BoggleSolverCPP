@@ -77,7 +77,7 @@ static void boggle_board_unit_tests()
 			return;
 		}
 
-		boggle.set_legal_words(all_boggle_words);
+		boggle.set_legal_words_from_alphabetically_sorted_array(all_boggle_words);
 		all_boggle_words.clear();
 		all_boggle_words.shrink_to_fit();
 

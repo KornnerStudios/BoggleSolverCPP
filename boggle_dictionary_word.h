@@ -11,11 +11,16 @@ struct s_boggle_dictionary_word
 	{
 		k_contains_qu_flag = 0x8000,
 		k_length_with_qu_as_one_grid_char_mask = 0x7FFF,
+
+		k_max_length = std::numeric_limits<uint16_t>::max(),
 	};
 
 	uint16_t private_flags;
+	// Absolute length of the source word
 	uint16_t length;
+	// Offset in the owner dictionary's internal pool where the source string is stored
 	uint32_t string_pool_offset;
+	// bitvector of the grid character IDs that appear in the word
 	boggle_grid_char_flags_t grid_chars_in_word_flags;
 
 	void initialize(
