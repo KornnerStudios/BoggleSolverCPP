@@ -257,6 +257,9 @@ void c_boggle_dictionary_compact_trie::dump(
 	all_words.reserve(m_source_dictionary->get_words_count());
 
 	std::vector<char> chars;
+	// We'll at most end up adding the longest_word_length in chars, plus the null terminator,
+	// so front load the allocation here to avoid reallocations and maintain more consistent memory usage
+	chars.reserve(m_source_dictionary->get_longest_word_length() + 1);
 	for (int root_node_index : m_root_indices)
 	{
 		if (root_node_index == -1)
