@@ -140,7 +140,9 @@
     <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="LICENSE" />
     <None Include="ransampl_COPYING" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\10x10_Dictionary.txt" />

@@ -112,6 +112,8 @@
     <None Include="ransampl_COPYING">
       <Filter>support</Filter>
     </None>
+    <None Include="LICENSE" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\10x10_Dictionary.txt">
