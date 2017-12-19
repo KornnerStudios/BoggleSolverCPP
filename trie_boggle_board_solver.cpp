@@ -43,7 +43,7 @@ void c_trie_boggle_board_root_character_solver::mark_cell_in_use(
 
 void c_trie_boggle_board_root_character_solver::clear_cells_in_use()
 {
-	memset(m_used_cells_flags, 0, 
+	memset(m_used_cells_flags, 0,
 		sizeof(m_used_cells_flags[0]) * m_used_cells_flags_length);
 }
 
@@ -71,7 +71,7 @@ void c_trie_boggle_board_root_character_solver::solve_recursive(
 	// For each neighbor character surrounding our matching character...
 	for (auto neighbor = _boggle_grid_cell_neighbor_iterator_begin_value; neighbor < k_number_of_boggle_grid_cell_neighbors; ++neighbor)
 	{
-		auto neighbor_cell_index = cell->get_neighbor_cell_index(&m_grid, neighbor);
+		auto neighbor_cell_index = cell->get_neighbor_cell_index(m_grid, neighbor);
 		// neighbor index is invalid, no neighbor there, try the next one...
 		// or the element is already in use by a trie prefix we're trying to solve
 		if (neighbor_cell_index == k_invalid_boggle_grid_cell_index ||
@@ -171,7 +171,7 @@ struct s_solver_stack_data
 	bool should_try_neighbor(
 		const c_trie_boggle_board_root_character_solver& solver)
 	{
-		neighbor_cell_index = cell->get_neighbor_cell_index(&solver.m_grid, neighbor);
+		neighbor_cell_index = cell->get_neighbor_cell_index(solver.m_grid, neighbor);
 		// neighbor index is invalid, no neighbor there, try the next one...
 		// or the element is already in use by a trie prefix we're trying to solve
 		if (neighbor_cell_index == k_invalid_boggle_grid_cell_index ||
@@ -423,7 +423,7 @@ void c_trie_boggle_board_solver::solve_board()
 	uint32_t total_words_count = dict->get_words_count();
 	uint32_t found_words_flags_length = static_cast<uint32_t>( bit_vector_traits_dword::get_size_in_words(total_words_count) );
 	m_found_words_flags = new uint32_t[found_words_flags_length];
-	memset(m_found_words_flags, 0, 
+	memset(m_found_words_flags, 0,
 		sizeof(m_found_words_flags[0]) * found_words_flags_length);
 
 	auto start_time = std::chrono::high_resolution_clock::now();

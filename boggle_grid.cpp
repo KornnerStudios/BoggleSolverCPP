@@ -9,16 +9,18 @@ static_assert(sizeof(s_boggle_grid_cell) == 0x8,
 const boggle_grid_cell_axis_index_t k_invalid_boggle_grid_cell_axis_index = std::numeric_limits<boggle_grid_cell_axis_index_t>::max();
 const boggle_grid_cell_index_t k_invalid_boggle_grid_cell_index = std::numeric_limits<boggle_grid_cell_index_t>::max();
 
+//////////////////////////////////////////////////////////////////////////
+// s_boggle_grid_cell
 
 void s_boggle_grid_cell::build_neighbor_data(
-	const c_boggle_grid* grid)
+	const c_boggle_grid& grid)
 {
 	valid_neighbor_flags = 0;
 	neighbor_grid_chars_flags = 0;
 
 	for (auto neighbor = _boggle_grid_cell_neighbor_iterator_begin_value; neighbor < k_number_of_boggle_grid_cell_neighbors; ++neighbor)
 	{
-		auto neighbor_cell_index = grid->get_neighbor_cell_index(this->row, this->column, neighbor);
+		auto neighbor_cell_index = grid.get_neighbor_cell_index(this->row, this->column, neighbor);
 		if (neighbor_cell_index != k_invalid_boggle_grid_cell_index)
 		{
 			SET_FLAG(valid_neighbor_flags, neighbor, true);
@@ -27,7 +29,7 @@ void s_boggle_grid_cell::build_neighbor_data(
 }
 
 void s_boggle_grid_cell::build_neighbor_chars_data(
-	const c_boggle_grid* grid)
+	const c_boggle_grid& grid)
 {
 	neighbor_grid_chars_flags = 0;
 
@@ -42,23 +44,27 @@ void s_boggle_grid_cell::build_neighbor_chars_data(
 }
 
 boggle_grid_cell_index_t s_boggle_grid_cell::get_neighbor_cell_index(
-	const c_boggle_grid* grid,
+	const c_boggle_grid& grid,
 	const e_boggle_grid_cell_neighbor neighbor) const
 {
 	if (!test_bit(valid_neighbor_flags, neighbor))
 		return k_invalid_boggle_grid_cell_index;
 
-	return grid->get_neighbor_index_cell_unsafe(this->row, this->column, neighbor);
+	return grid.get_neighbor_index_cell_unsafe(this->row, this->column, neighbor);
 }
 
 const s_boggle_grid_cell* s_boggle_grid_cell::get_neighbor_cell(
-	const c_boggle_grid* grid,
+	const c_boggle_grid& grid,
 	const e_boggle_grid_cell_neighbor neighbor) const
 {
 	auto neighbor_cell_index = get_neighbor_cell_index(grid, neighbor);
-	auto neighbor_cell = grid->get_cell(neighbor_cell_index);
+	auto neighbor_cell = grid.get_cell(neighbor_cell_index);
 	return neighbor_cell;
 }
+
+
+//////////////////////////////////////////////////////////////////////////
+// c_boggle_grid
 
 c_boggle_grid::c_boggle_grid(
 	const int width,
@@ -107,7 +113,7 @@ bool c_boggle_grid::build_cells_for_row_major_order()
 			cell.grid_char = k_invalid_boggle_grid_char;
 			cell.row = static_cast<boggle_grid_cell_axis_index_t>(x);
 			cell.column = static_cast<boggle_grid_cell_axis_index_t>(y);
-			cell.build_neighbor_data(this);
+			cell.build_neighbor_data(*this);
 		}
 	}
 
@@ -196,7 +202,7 @@ bool c_boggle_grid::set_grid_characters(
 
 	for (auto cell = begin_cells(), end = end_cells(); cell != end; ++cell)
 	{
-		cell->build_neighbor_chars_data(this);
+		cell->build_neighbor_chars_data(*this);
 	}
 
 	return true;

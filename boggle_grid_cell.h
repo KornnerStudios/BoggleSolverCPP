@@ -49,10 +49,10 @@ struct s_boggle_grid_cell
 	boggle_grid_char_flags_t neighbor_grid_chars_flags;
 
 	void build_neighbor_data(
-		const c_boggle_grid* grid);
+		const c_boggle_grid& grid);
 
 	void build_neighbor_chars_data(
-		const c_boggle_grid* grid);
+		const c_boggle_grid& grid);
 
 	// Gets the character, as a string, found at this cell
 	const char* to_string() const
@@ -66,11 +66,11 @@ struct s_boggle_grid_cell
 	}
 
 	boggle_grid_cell_index_t get_neighbor_cell_index(
-		const c_boggle_grid* grid,
+		const c_boggle_grid& grid,
 		const e_boggle_grid_cell_neighbor neighbor) const;
 
 	const s_boggle_grid_cell* get_neighbor_cell(
-		const c_boggle_grid* grid,
+		const c_boggle_grid& grid,
 		const e_boggle_grid_cell_neighbor neighbor) const;
 };
 
