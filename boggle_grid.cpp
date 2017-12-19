@@ -6,8 +6,8 @@
 static_assert(sizeof(s_boggle_grid_cell) == 0x8,
 	"Unexpected s_boggle_grid_cell size");
 
-const boggle_grid_cell_axis_index_t k_invalid_boggle_grid_cell_axis_index = UINT8_MAX;
-const boggle_grid_cell_index_t k_invalid_boggle_grid_cell_index = UINT16_MAX;
+const boggle_grid_cell_axis_index_t k_invalid_boggle_grid_cell_axis_index = std::numeric_limits<boggle_grid_cell_axis_index_t>::max();
+const boggle_grid_cell_index_t k_invalid_boggle_grid_cell_index = std::numeric_limits<boggle_grid_cell_index_t>::max();
 
 
 void s_boggle_grid_cell::build_neighbor_data(
