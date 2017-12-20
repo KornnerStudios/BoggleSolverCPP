@@ -35,6 +35,10 @@ struct s_boggle_dictionary_compact_trie_node
 
 	typedef int32_t child_node_indices_offset_t;
 
+	static_assert(
+		(BIT_COUNT(private_flags_t)-k_private_flags_grid_char_shift) >= BIT_COUNT(boggle_grid_char_t),
+		"Cannot encode grid_char into private flags!");
+
 	private_flags_t private_flags;
 	child_node_indices_offset_t child_node_indices_offset;
 	boggle_grid_char_flags_t valid_child_node_indices_flags;
