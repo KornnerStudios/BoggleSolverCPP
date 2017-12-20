@@ -35,7 +35,7 @@ struct s_boggle_dictionary_compact_trie_node
 
 	typedef int32_t child_node_indices_offset_t;
 
-	raw_relative_node_index_t private_flags;
+	private_flags_t private_flags;
 	child_node_indices_offset_t child_node_indices_offset;
 	boggle_grid_char_flags_t valid_child_node_indices_flags;
 	int completed_word_index;
